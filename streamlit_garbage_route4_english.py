@@ -40,7 +40,7 @@ def main():
             district_counts[district] = district_counts.get(district, 0) + 1
     
     if  option == "Yes":
-        districts = sorted([district for district, count in district_counts.items() if districtscount >= 2])
+        districts = sorted([district for district, count in district_counts.items() if count >= 2])
         selected_district = st.selectbox("Select a district to optimize route:", districts)
 
         filtered_locations = [loc for loc in locations if extract_district(loc) == selected_district]
