@@ -1,4 +1,3 @@
-
 import streamlit as st
 import streamlit.components.v1 as components
 import googlemaps
@@ -33,8 +32,15 @@ def main():
 
     locations = [line.strip() for line in raw_input.strip().split('\n') if line.strip()]
     option = st.radio( "Do you want to classify by district",("Yes", "No"))
+
+    district_counts = {}
+    for loc in locations:
+        district = extract_district(loc)
+        if district != 'Không xác định':
+            district_counts[district] = district_counts.get(district, 0) + 1
+    
     if  option == "Yes":
-        districts = sorted([district for district, count in district_counts.items() if count >= 2])
+        districts = sorted([district for district, count in district_counts.items() if districtscount >= 2])
         selected_district = st.selectbox("Select a district to optimize route:", districts)
 
         filtered_locations = [loc for loc in locations if extract_district(loc) == selected_district]
