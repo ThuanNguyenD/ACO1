@@ -27,8 +27,6 @@ def extract_district(address):
 
 def main():
     st.title("🚛 ECOROUTE")
-   
-
     raw_input = st.text_area("Enter the list of addresses (one address per line):", height=200)
 
     locations = [line.strip() for line in raw_input.strip().split('\n') if line.strip()]
